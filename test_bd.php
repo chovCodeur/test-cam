@@ -17,7 +17,7 @@
     </head>
     <body>
         <?php
-			$conn = mysqli_connect('veggiecrush.masi-henallux.be:3306', 'api', 'api', 'alchimist');
+			$conn = mysqli_connect('seeu.masi-henallux.be:3306', 'bd', 'bede', 'SEEU');
 			//if connection is not successful you will see text error
 			if (!$conn) {
 			       die('Could not connect: ' . mysqli_error());

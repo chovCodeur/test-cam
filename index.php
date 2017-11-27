@@ -1,3 +1,5 @@
+<?php //$_SESSION['id_user']='1';?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -30,7 +32,9 @@ and open the template in the editor.
             <a><i class="fa fa-user-circle fa-3x" aria-hidden="true"></i></a>
         </div>
         
-        
+        <?php 
+        if(is_null($_SESSION['id_user'])){
+        ?>
         <div id="partie_centrale">
             <table id="tableau_accueil">
                 <tr>
@@ -62,6 +66,47 @@ and open the template in the editor.
             </table>
         </div>
         
+        <?php 
+        } else {
+        ?>
+        <div id="partie_centrale">
+            <table id="tableau_accueil">
+                <tr>
+                    <td>
+                        <h2>CREEZ</h2>
+                    </td>
+                    <td>
+                        <h2>REJOIGNEZ</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form class="formulaire_accueil" action="chat.php" method="POST">
+                                <label><b>ID : </b></label>
+                                <input type="text" name="id-creer" value="1458"/>
+                                <br/><br/>
+                                <label><b>Mot de passe : </b></label>
+                                <input type="password" name="password-creer"/>
+                                <br/><br/>
+                                <input type="submit"/>
+                            </form>
+                        </td>     
+                    <td>
+                        <form class="formulaire_accueil" action="chat.php" method="POST">
+                            <label><b>ID : </b></label>
+                            <input type="text" name="id-rejoindre"/>
+                            <br/><br/>
+                            <label><b>Mot de passe : </b></label>
+                            <input type="password" name="password-rejoindre"/>
+                            <br/><br/>
+                            <input type="submit"/>
+                        </form>
+                    </td>
+                </tr>      
+            </table>
+        </div>
+        <?php } ?>
+            
         </div>
         
         
