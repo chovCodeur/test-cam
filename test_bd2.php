@@ -17,7 +17,7 @@
     </head>
     <body>
         <?php
-			$conn = mysqli_connect('seeu.masi-henallux.be:3306', 'bd', 'bede', 'SEEU');
+			$conn = mysqli_connect('veggiecrush.masi-henallux.be:3306', 'api', 'api', 'alchimist');
 			//if connection is not successful you will see text error
 			if (!$conn) {
 			       die('Could not connect: ' . mysqli_error());
@@ -25,14 +25,14 @@
 			//if connection is successfuly you will see message bellow
 			//echo 'Connected successfully';
 			 
-            $sql = "SELECT * FROM UTILISATEUR";
+            $sql = "SELECT * FROM ACCOUNT";
 
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                    var_dump($row);
+                    echo "id: " . $row["id"]. " - pwd: " . $row["password"]. " email : " . $row["email"]. "<br>";
                 }
             } else {
                 echo "0 results";

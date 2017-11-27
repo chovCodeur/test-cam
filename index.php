@@ -1,4 +1,6 @@
-<?php //$_SESSION['id_user']='1';?>
+<?php session_start();
+require_once 'autoload.php';
+?>
 
 <!DOCTYPE html>
 <!--
@@ -30,6 +32,12 @@ and open the template in the editor.
         
         <div id="menu">
             <a><i class="fa fa-user-circle fa-3x" aria-hidden="true"></i></a>
+            <?php if(!is_null($_SESSION['id_user'])){?>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <a href="accueil_nonconnecte.html"><i class="fa fa-sign-out fa-3x" aria-hidden="true"></i></a>
+            <?php } ?>
         </div>
         
         <?php 
@@ -113,48 +121,86 @@ and open the template in the editor.
         <div class="row pop-up big-popup">
             <div class="box small-6 large-centered">
                 <a href="#" class="close-button">&#10006;</a>
-                <div id="partie_centrale_popup">
-                    <table id="tableau_popup">
-                        <tr>
-                            <td>
-                                <h2>NOUVEAU ?</h2>
-                            </td>
-                            <td>
-                                <h2>HABITUE ?</h2>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                        <form action="" method="post">
+                        <?php if(empty($_POST['username_co']) && empty($_POST['username_inscr'])) {
+                        ?>
+                        <div id="partie_centrale_popup">
+                            <table id="tableau_popup">
+                                    <tr>
+                                    <td>
+                                        <h2>NOUVEAU ?</h2>
+                                    </td>
+                                    <td>
+                                        <h2>HABITUE ?</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                                <form action="" method="post">
 
-                                            <input type="text" name="username" placeholder="Pseudo" required="required"/></br>
-                                            <input type="email" name="username" placeholder="Adresse Mail" required="required"/></br>
-                                            <input type="password" name="password" placeholder="Mot de passe" required="required"/></br>
-                                            <input type="password" name="password" placeholder="Vérification Mot de passe" required="required"/></br>
-                                            <button type="submit">S'inscrire</button>
+                                                    <input type="text" name="username_inscr" placeholder="Pseudo" required="required"/></br>
+                                                    <input type="email" name="email_inscr" placeholder="Adresse Mail" required="required"/></br>
+                                                    <input type="password" name="password_inscr" placeholder="Mot de passe" required="required"/></br>
+                                                    <input type="password" name="password2_inscr" placeholder="Vérification Mot de passe" required="required"/></br>
+                                                    <button type="submit">S'inscrire</button>
 
-                                        </form>
-                                    </div>
-                            </td>    
-                            <td>
-                                
-                                    <div>
-                                        <form action="" method="post">
+                                                </form>
+                                            </div>
+                                    </td>    
+                                    <td>
 
-                                            <input type="text" name="username" placeholder="Pseudo" required="required"/></br>
-                                            <input type="password" name="password" placeholder="Mot de passe" required="required"/></br>
-                                            <a href="#">Mot de passe oublié</a></br>
-                                            <button type="submit">Se connecter</button></br>
+                                            <div>
+                                                <form action="" method="post">
 
-                                        </form>
-                                    </div>
-                            </td>
-                        </tr>      
-                    </table>
-                </div>
+                                                    <input type="text" name="username_co" placeholder="Pseudo" required="required"/></br>
+                                                    <input type="password" name="password_co" placeholder="Mot de passe" required="required"/></br>
+                                                    <a href="#">Mot de passe oublié</a></br>
+                                                    <button type="submit">Se connecter</button></br>
+
+                                                </form>
+                                            </div>
+                                    </td>
+                                </tr> 
+                            </table>
+                        </div>
             
-            </div>
+            
+                        <?php 
+                        } else {
+                            echo "1";
+                           if(!empty($_POST['username_co']) && empty($_POST['username_inscr'])){
+                               /*
+                                $pdo=new Mypdo();
+                                $utilisateurmanager = new UtilisateurManager($pdo);
+                                
+                                $utilisateur = $utilisateurmanager->getPersonneByLog(1);
+                                var_dump($utilisateur);     
+                                echo $utilisateur;*/
+                                
+                           } else {
+                               if(empty($_POST['username_co']) && !empty($_POST['username_inscr'])){
+                                  echo '#####'.$_POST['username_inscr'];
+                               } else {
+                                   
+                               }
+                           }
+                           echo "2";
+                           ?>
+                           <div id="partie_centrale_popup">
+                                <h2>Modifier votre profil</h2>
+                                <form action="" method="post">
+                                    <input type="text" name="username" placeholder="Pseudo" required="required"/></br>
+                                    <input type="email" name="username" placeholder="Adresse Mail" required="required"/></br>
+                                    <input type="password" name="password" placeholder="Mot de passe" required="required"/></br>
+                                    <input type="password" name="password" placeholder="Vérification Mot de passe" required="required"/></br>
+                                    <button type="submit">Modifier</button>
+                                    <input type="button" value="Supprimer mon compte" />
+                                </form>
+                            </div><?php
+                        }
+                        
+                        ?>
+                </div>
         </div>
     </body>
 </html>

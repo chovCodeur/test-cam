@@ -1,4 +1,4 @@
 <?php
 function __autoload($className){
-    require $className.'.php';
+    require 'classes/'.$className.'.php';
 }?>
