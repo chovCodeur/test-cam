@@ -1,0 +1,92 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6 oct. 2017, 14:11:36
+    Author     : Kevin
+*/
+html { 
+  margin:0;
+  padding:0;
+  background: url(../images/fond.png) no-repeat center fixed; 
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+}
+body {
+    width: 99.5%;  
+    font-family: arial;
+    color:white;
+    background-color:black;
+}
+
+#logo_accueil {
+    position:absolute;
+    width: 99.5%;
+    margin-top:1%;
+    
+}
+#logo_accueil img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    
+}
+#partie_centrale {
+    margin-top:250px;
+    position: absolute;
+    width: 99.5%;
+    height:70%;
+}
+
+#tableau_accueil {
+    width: 100%;
+    height:75%;
+}
+
+#tableau_accueil td:first-child{
+    border-right: 5px white solid;
+}
+
+#tableau_accueil td{
+    vertical-align: top;
+    width: 50%;
+}
+
+.p_info{
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+h2{
+    text-align: center;
+}
+.formulaire_accueil{
+    width: 40%;
+    text-align: center;
+    vertical-align: top;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+}
+
+label {
+    display: block;
+    width: 150px;
+    float: left;
+    text-align: left;
+}
+
+#menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    
+}
+#menu a {
+   color : white;
+}    
