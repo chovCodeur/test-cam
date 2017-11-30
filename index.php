@@ -1,5 +1,5 @@
 <?php session_start();
-require_once 'autoload.php';
+require_once("include/autoload.inc.php");
 ?>
 
 <!DOCTYPE html>
@@ -169,17 +169,24 @@ and open the template in the editor.
                         } else {
                             echo "1";
                            if(!empty($_POST['username_co']) && empty($_POST['username_inscr'])){
-                               /*
+                                //$_SESSION['id_user']=$_POST['username_co'];
+                              
+                                header("Refresh:0; url=index.php");
+                                require 'classes/Mypdo.class.php';
+                                require 'classes/UtilisateurManager.class.php';
                                 $pdo=new Mypdo();
                                 $utilisateurmanager = new UtilisateurManager($pdo);
                                 
-                                $utilisateur = $utilisateurmanager->getPersonneByLog(1);
+                                $utilisateur = $utilisateurmanager->getUserByUsernameAndPassword($_POST['username_co'],$_POST['password_co']);
+                                $_SESSION['id_user']=$utilisateur->getId_Utilisateur();
                                 var_dump($utilisateur);     
-                                echo $utilisateur;*/
+                                echo $utilisateur;
                                 
                            } else {
                                if(empty($_POST['username_co']) && !empty($_POST['username_inscr'])){
                                   echo '#####'.$_POST['username_inscr'];
+                                  $_SESSION['id_user']=$_POST['username_inscr'];
+                                  header("Refresh:0; url=index.php");
                                } else {
                                    
                                }
@@ -198,7 +205,7 @@ and open the template in the editor.
                                 </form>
                             </div><?php
                         }
-                        
+                        header("Refresh:0; url=index.php");
                         ?>
                 </div>
         </div>

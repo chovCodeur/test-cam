@@ -19,8 +19,7 @@
         <div id="page_accueil" class="">
         <div id="logo_accueil">
             <img src="images/logo3.png" height="200"/>
-        </div>
-        
+        </div>       
         <div id="menu">
             <a><i class="fa fa-user-circle fa-3x" aria-hidden="true"></i></a>
         </div>
