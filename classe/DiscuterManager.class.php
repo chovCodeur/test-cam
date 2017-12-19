@@ -21,7 +21,9 @@ class DiscuterManager {
         $requete->bindValue(':id_salon', $id_salon);
         $requete->bindValue(':id_user', $id_user);
         $requete->bindValue(':date_debut', $date_debut);
-        $nbLignes = $requete->execute();
+        $requete->execute();
+        $nbLignes = $requete->rowCount();
+        
         if ($nbLignes == 1) {
             return new Discuter($requete->fetch(PDO::FETCH_ASSOC));
         }

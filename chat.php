@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 // Inutile d'expliquer la présence du session_start().
 
@@ -47,7 +48,9 @@ if(isset($_SESSION['sauvegarde']))
         <script src="js/jquery-3.2.1.js"></script>
         <script src="js/script_pop-up.js" type="text/javascript"></script> 
         <?php 
-        if(!(is_null($_POST['id-creer']))){
+        if(isset($_SESSION['id-creer'])){
+            $_POST['id-creer']=$_SESSION['id-creer'];
+            unset($_SESSION['id-creer']);
             // on arrive depuis le form creer
             ?>
             <script>
@@ -57,7 +60,9 @@ if(isset($_SESSION['sauvegarde']))
             
         <?php   
         } else {
-            if(!(is_null($_POST['id-rejoindre']))){
+            if(isset($_SESSION['id-rejoindre'])){
+                $_POST['id-rejoindre']=$_SESSION['id-rejoindre'];
+                unset($_SESSION['id-rejoindre']);
             //on arrive depuis le form rejoindre
             ?>
             <script>
@@ -66,13 +71,11 @@ if(isset($_SESSION['sauvegarde']))
             </script>
             <?php
             } else {
-				?><script>
-				var type_conv = "rejoindre";
-                var url = location.href;
-				console.log(url);
-				var res = url.split('#');
-				var id_salon=res[1];
-				</script><?php
+                //lien direct
+                //header("LOCATION: index.php");
+                ?><script>
+                location.href="index.php";    
+                                </script><?php
             }
         }
     
@@ -83,6 +86,16 @@ if(isset($_SESSION['sauvegarde']))
 				
                 location.href = location.href.split('#')[0] + '#' + id_salon;
                 location.reload();
+            }
+        </script>
+        <script>
+        function SetVolume(val)
+            {
+                var player = document.querySelectorAll('video');
+                console.log('Before: ' + player.volume);
+                player.volume = val / 100;
+                console.log('After: ' + player.volume);
+                $('#AfficheRange').html(val);
             }
         </script>
 
@@ -129,7 +142,7 @@ if(isset($_SESSION['sauvegarde']))
             <br/>
             <div id="volumeGeneral">
                 <p id="texteVolumeGeneral">Volume général</p>
-                <input type="range" min="0" max="100" value="50" oninput="document.getElementById('AfficheRange').textContent=value" />
+                <input id="vol-control" type="range" min="0" max="100" step="1" oninput="SetVolume(this.value)" onchange="SetVolume(this.value)"/>
                 <span id="AfficheRange">50</span>
             </div>
             

@@ -14,16 +14,16 @@ class Discuter {
     public function affecte($values) {
         foreach ($values as $nom => $valeur) {
             switch ($nom) {
-                case 'id_salon' :
+                case 'DIS_ID_SALON' :
                     $this->setId_Salon($valeur);
                     break;
-                case 'id_utilisateur' :
+                case 'DIS_ID_USER' :
                     $this->setId_utilisateur($valeur);
                     break;
-                case 'date_debut' :
+                case 'DIS_DATE_DEBUT' :
                     $this->setDate_Debut($valeur);
                     break;
-                case 'date_fin' :
+                case 'DIS_DATE_FIN' :
                     $this->setDate_Fin($valeur);
                     break;
             }

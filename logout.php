@@ -1,0 +1,13 @@
+<?php
+session_start();
+if(isset($_SESSION['id_user'])){
+    unset($_SESSION['id_user']);
+ }
+ if(isset($_POST['username_co'])){
+    unset($_POST['username_co']);
+ }
+ if(isset($_POST['username_inscr'])){
+    unset($_POST['username_inscr']);
+ }
+session_destroy();
+header("location:/index.php");

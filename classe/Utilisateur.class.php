@@ -6,23 +6,29 @@ class Utilisateur {
     private $mdp_utilisateur;
     private $pseudo_utilisateur;
     
-    public function __construct($values = array()) {
-        if (!empty($values)) {
-            $this->affecte($values);
-        }
-    }
-    public function affecte($values) {
-        foreach ($values as $nom => $valeur) {
-            switch ($nom) {
-                case 'id_activite' :
-                    $this->setId($valeur);
+    public function __construct($valeurs){
+        if(!empty($valeurs)){
+            foreach($valeurs as $attribut => $valeur){
+                switch ($attribut) {
+                case 'USR_ID_USER' :
+                    $this->setId_Utilisateur($valeur);
                     break;
-                
-            }
+                case 'USR_MAIL_USER' :
+                    $this->setMail_Utilisateur($valeur);
+                    break;
+                case 'USR_MDP_USER' :
+                    $this->setMdp_Utilisateur($valeur);
+                    break;
+                case 'USR_PSEUDO_USER' :
+                    $this->setPseudo_Utilisateur($valeur);
+                    break;
+                }
+             }
         }
     }
     
     public function getId_Utilisateur() {
+        
         return $this->id_utilisateur;
     }
     public function setId_Utilisateur($id) {

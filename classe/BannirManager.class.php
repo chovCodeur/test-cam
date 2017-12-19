@@ -20,7 +20,9 @@ class BannirManager {
         $requete = $this->db->prepare($sql);
         $requete->bindValue(':id_salon', $id_salon);
         $requete->bindValue(':adresse_ip', $adresse_ip);
-        $nbLignes = $requete->execute();
+        $requete->execute();
+        $nbLignes = $requete->rowCount();
+        
         if ($nbLignes == 1) {
             return new Bannir($requete->fetch(PDO::FETCH_ASSOC));
         }

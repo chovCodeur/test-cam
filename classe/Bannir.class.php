@@ -18,16 +18,16 @@ class Bannir {
     public function affecte($values) {
         foreach ($values as $nom => $valeur) {
             switch ($nom) {
-                case 'id_salon' :
+                case 'BAN_ID_SALON' :
                     $this->setId_Salon($valeur);
                     break;
-                case 'adresse_ip_bannir' :
+                case 'BAN_ADRESSE_IP_BAN' :
                     $this->setAdresse_Ip_Bannir($valeur);
                     break;
-                case 'date_bannir' :
+                case 'BAN_DATE_BAN' :
                     $this->setDate_Bannir($valeur);
                     break;
-                case 'id_utilisateur' :
+                case 'BAN_ID_USER' :
                     $this->setId_utilisateur($valeur);
                     break;
             }

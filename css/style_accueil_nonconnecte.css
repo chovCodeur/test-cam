@@ -74,6 +74,15 @@ h2{
     margin-top: 25px;
 }
 
+.centrer{
+    width: 20%;
+    text-align: center;
+    vertical-align: top;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
 label {
     display: block;
     width: 150px;

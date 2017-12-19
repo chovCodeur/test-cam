@@ -13,13 +13,13 @@ class Salon {
     public function affecte($values) {
         foreach ($values as $nom => $valeur) {
             switch ($nom) {
-                case 'id_salon' :
-                    $this->setId($valeur);
+                case 'SAL_ID_SALON' :
+                    $this->setId_Salon($valeur);
                     break;
-                case 'mdp_salon' :
+                case 'SAL_MDP_SALON' :
                     $this->setMdp_Salon($valeur);
                     break;
-                case 'id_administrateur' :
+                case 'SAL_ID_ADMIN' :
                     $this->setId_Administrateur($valeur);
                     break;
             }
